@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  <main class="container mt-3 mb-5">
+
+    <div class="row">
+      <div class="col-12 col-lg-10 offset-lg-1 m-auto">
+
+        <div id="plotly-timeseries"></div>
+
+      </div>
+    </div>
+
+
+
+
+
+  </main>
+<script>
+  var graph = {{ my_graph | safe }};
+  Plotly.plot('plotly-timeseries', graph, {});
+</script>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% include 'header.html' %}
+{% set days={"mon":"Понедельник","tue":"Вторник","wed":"Среда","thu":"Четверг", "fri":"Пятница", "sat":"Суббота","sun":"Воскресенье"}%}
+<body>
+{% include 'navigator.html' %}
+
+{% block content %} {% endblock %}
+
+{% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <main class="container mt-3">
+    <div class="container mx-auto"  align="center">
+      <div class="row" align="center">
+        <div class="col">
+          <div class="card" style="width: 18rem;" align="center">
+            <div class="card-body">
+              <img src="{{url_for('static', filename='Sasha.jpg')}}" class="img-fluid" width="250px" alt=""">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Александр Абрамов</h5>
+              <p><span class="badge badge-secondary mr-2">Data Scientist</span></p>
+              <p class="card-text">True NLPшник!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card" style="width: 18rem;" align="center">
+            <div class="card-body">
+              <img src="{{url_for('static', filename='Nikita.jpg')}}" class="img-fluid" width="250px" alt=""">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Никита Фомичев</h5>
+              <p><span class="badge badge-secondary mr-2">Директор по разработке моделей</span></p>
+              <p class="card-text">5.5 лет опыта работы в анализе данных и разработке сервисов машинного обучения.</p>
+              <p class="card-text">2 года финансового анализа компаний</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </main>
+{% endblock %}
