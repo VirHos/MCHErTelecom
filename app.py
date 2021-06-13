@@ -85,7 +85,14 @@ def main():
         #print(get_best_intersec_points('кафе'))
         #print(spheredict[sphere])
         print(spheredict[sphere])
-        return render_template('index.html', my_graph=create_graph_rec(get_best_intersec_points(spheredict[sphere])))
+        print(int(day.split(',')[0]))
+        return render_template('index.html', my_graph=create_graph_rec(\
+            get_best_intersec_points(spheredict[sphere],day_flag=True,  #FLAG TRUE - day FALSE-Night
+                             day_l=int(day.split(',')[0]), #low day bound
+                             day_u=int(day.split(',')[1]), #up day bound
+                             night_l=int(night.split(',')[0]), #low night bound
+                             night_u=int(night.split(',')[1]))\
+        ))
     return render_template('index.html', my_graph=create_graph())
 
 
