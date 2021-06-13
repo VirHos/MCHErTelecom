@@ -1,9 +1,71 @@
 {% extends 'base.html' %}
 {% block content %}
-  <main class="container mt-3 mb-5">
+ <main class="container mt-3 mb-5">
 
     <div class="row">
-      <div class="col-12 col-lg-10 offset-lg-1 m-auto">
+      <div class="col-sm" align ="center">
+
+            <div class="form-group">
+
+              <select class="form-control" id="sphere">
+                <option>Автосалон</option>
+                <option>Аттракционы</option>
+                <option>Бар</option>
+                <option>Библиотека</option>
+                <option>Буфет</option>
+                <option>Гипермаркет</option>
+                <option>Дом быта</option>
+                <option>Закусочная</option>
+                <option>Иные объекты бытового обслуживания</option>
+                <option>Кафе</option>
+                <option>Киоск</option>
+                <option>Ломбард</option>
+                <option>Магазин</option>
+                <option>Магазин с алкоголем</option>
+                <option>Магазин-салон</option>
+                <option>Минимаркет</option>
+                <option>Музей</option>
+                <option>Передвижной торговый объект</option>
+                <option>Продажа транспортных билетов</option>
+                <option>Ремонт металлоизделий</option>
+                <option>Ремонт обуви</option>
+                <option>Ремонт одежды и обуви</option>
+                <option>Ремонт техники</option>
+                <option>Ремонт часов</option>
+                <option>Ремонт ювелирных изделий</option>
+                <option>Ресторан</option>
+                <option>Салон красоты</option>
+                <option>Сауна</option>
+                <option>Специализированный непродуктовый магазин</option>
+                <option>Специализированный продуктовый магазин</option>
+                <option>Столовая</option>
+                <option>Супермаркет</option>
+                <option>Товары для детей</option>
+                <option>Товары для дома</option>
+                <option>Товары для женщин</option>
+                <option>Универсам</option>
+                <option>Фастфуд</option>
+                <option>Фотоателье</option>
+                <option>Химчистка</option>
+
+              </select>
+            </div>
+
+      </div>
+      <div class="col-sm" align="right">
+        <div>
+          Дневная проходимость<b>10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>1000</b>
+        </div>
+        <div>
+          Ночная проходимость<b>10</b> <input id="ex3" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>1000</b>
+        </div>
+        <div>
+          <button type="button" class="btn btn-light">Подобрать локации</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-10 offset-lg-0 m-auto">
 
         <div id="plotly-timeseries"></div>
 
@@ -15,9 +77,17 @@
 
 
   </main>
+
 <script>
   var graph = {{ my_graph | safe }};
   Plotly.plot('plotly-timeseries', graph, {});
+
+
+  // Without JQuery
+  var slider = new Slider('#ex2', {});
+  var slider = new Slider('#ex3', {});
 </script>
+
+
 
 {% endblock %}
