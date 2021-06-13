@@ -63,6 +63,17 @@ def create_graph():
 
     return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
+def create_graph_rec(points):
+    print(points)
+    #points = pd.read_excel("./data/data-4275-2021-05-28.xlsx",engine='openpyxl')
+
+    fig = px.scatter_mapbox(points, lat="lat", lon="long", hover_data={'lat':False,'long':False,"concurents_cnt":True},#hover_name="Средняя проходимость в день",
+                            color_discrete_sequence=["slateblue"], zoom=11, height=500)
+    fig.update_layout(mapbox_style="open-street-map")
+
+
+    return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == "POST":
@@ -70,10 +81,11 @@ def main():
         day = request.form.get('day')
         night = request.form.get('night')
         print(sphere, day, night)
-        print(get_best_intersec_points('кинотеатры'))
+        #print(get_best_intersec_points('кинотеатры'))
         #print(get_best_intersec_points('кафе'))
+        #print(spheredict[sphere])
         print(spheredict[sphere])
-        #print(get_best_intersec_points(spheredict[sphere]))
+        return render_template('index.html', my_graph=create_graph_rec(get_best_intersec_points(spheredict[sphere])))
     return render_template('index.html', my_graph=create_graph())
 
 

@@ -17,6 +17,8 @@ with gzip.open('./data/dict_sosedi.json.gz', 'r') as d:
      name_to_id =json.load(d)
         
 res_assoc = pd.read_csv('./data/res_assoc.csv.gz', sep=';',compression='gzip')
+res_assoc['consequents']=res_assoc['consequents'].map(lambda x: set([re.sub("'", '', st) for st in re.sub("[{}]",'', x).split("', ")]))
+res_assoc['antecedents']=res_assoc['antecedents'].map(lambda x: set([re.sub("'", '', st) for st in re.sub("[{}]",'', x).split("', ")]))
 all_avg = pd.read_csv('./data/train_points_with_prohod.csv', sep=';')
 
 def get_top_k_from_len(d):
@@ -104,7 +106,7 @@ def get_best_intersec_points(zapros,
     conc_cnt = [name_to_id[str(k)]['name_neighbors'].count(zapros) for k in best_id]
     
     return {'lat':lat, 'long':long, 
-            'concurents_cnt': sum(conc_cnt),
+            'concurents_cnt': conc_cnt,
             'lat_concurent':lat_sosed, 
             'long_concurent':long_sosed,
             'name_concurent':names_conc}
