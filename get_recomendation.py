@@ -72,13 +72,13 @@ def get_best_intersec_points(zapros,
         traf_d = name_to_id[k]['prohod_d']
         traf_n = name_to_id[k]['prohod_n']
 
-        if traf_d <= day_l and traf_d >= day_u:
+        if day_flag and(traf_d <= day_l or traf_d >= day_u):
             continue
-        elif traf_d >= day_l and traf_d <= day_u:
+        elif day_flag and traf_d >= day_l and traf_d <= day_u:
             traf = traf_d
-        elif traf_n <= night_l and traf_n >= night_u:
+        elif day_flag==False and  (traf_n <= night_l or traf_n >= night_u):
             continue
-        elif traf_n >= night_l and traf_n <= night_u:
+        elif day_flag==False and  traf_n >= night_l and traf_n <= night_u:
             traf = traf_n
         else:
             traf = name_to_id[k]['prohod_all']
@@ -102,8 +102,7 @@ def get_best_intersec_points(zapros,
     intersec['consequents'] = np.array(intersec['consequents'])
     intersec['inter'] = np.array(intersec['inter'])
     best_id = intersec['id'][np.argsort(-1 * intersec['cum_score'])[:20]]
-
-    consec = intersec['consequents'][best_id]
+    #consec = intersec['consequents'][best_id]
     lat = all_avg.iloc[best_id]['lat'].values
     long = all_avg.iloc[best_id]['long'].values
 
@@ -112,7 +111,7 @@ def get_best_intersec_points(zapros,
 
     # names_conc = np.hstack([get_conc_name(k, zapros) for k in best_id])
 
-    score = intersec['cum_score'][best_id]
+    #score = intersec['cum_score'][best_id]
     conc_cnt = [name_to_id[str(k)]['name_neighbors'].count(zapros) for k in best_id]
 
     return {'lat': lat, 'long': long,

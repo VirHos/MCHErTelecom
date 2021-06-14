@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
  <main class="container mt-3 mb-5">
-    <form action="/" class="row" align="center"  method="POST">
+
     <div class="row" align="center">
-      <div class="row" align="center">
+      <form action="/" class="mw-100" method="POST">
+      <div class="col w-100000" align="center">
 
       <div class="w-200" align ="center">
 
@@ -56,10 +57,10 @@
       </div>
       <div class="col-sm" align="right">
         <div class="row">
-          Дневная проходимость <b>2000</b> &nbsp;&nbsp;&nbsp;<input id="day" name="day" type="text" class="span2" value="" data-slider-min="2000" data-slider-max="10000" data-slider-step="5" data-slider-value="[2000,10000]"/> &nbsp;&nbsp;&nbsp;<b>10000</b>
+          Дневная проходимость <b>0</b> &nbsp;&nbsp;&nbsp;<input id="day" name="day" type="text" class="span2" value="" data-slider-min="0" data-slider-max="10000" data-slider-step="5" data-slider-value="[0,10000]"/> &nbsp;&nbsp;&nbsp;<b>10000</b>
         </div>
         <div class="row">
-          Ночная проходимость <b>2000</b> &nbsp;&nbsp;&nbsp;<input id="night" name="night" type="text" class="span2" value="" data-slider-min="2000" data-slider-max="3000" data-slider-step="5" data-slider-value="[2000,3000]"/> &nbsp;&nbsp;&nbsp;<b>&nbsp;3000</b>
+          Ночная проходимость <b>0</b> &nbsp;&nbsp;&nbsp;<input id="night" name="night" type="text" class="span2" value="" data-slider-min="0" data-slider-max="3000" data-slider-step="5" data-slider-value="[0,3000]"/> &nbsp;&nbsp;&nbsp;<b>&nbsp;3000</b>
         </div>
 
         <div class="row mt-3 mu-2" align="right">
@@ -68,8 +69,9 @@
       </div>
 
       </div>
+        </form>
     </div>
-    </form>
+
     <div class="row">
       <div class="col-12 col-lg-10 offset-lg-0 m-auto">
 
