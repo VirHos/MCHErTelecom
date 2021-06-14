@@ -1,4 +1,4 @@
-# MoscowCityHack ЭрТелеком
+# MoscowCityHack ЭрТелеком. Команда PyPyPy
 
 Сервис автоматически собирается и выкладывается по адресу https://moscowcityhackathon.herokuapp.com/
 
