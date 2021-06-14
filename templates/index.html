@@ -1,70 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
  <main class="container mt-3 mb-5">
-
+    <div class="col">
     <div class="row" align="center">
       <form action="/" class="mw-100" method="POST">
-      <div class="col w-100000" align="center">
+      <div class="row mt-3 w-100000" align="center">
 
       <div class="w-200" align ="center">
 
             <div class="col">
 
               <select class="form-control" id="sphere" name="sphere">
-                <option>Автосалон</option>
-                <option>Аттракционы</option>
-                <option selected>Бар</option>
-                <option>Библиотека</option>
-                <option>Буфет</option>
-                <option>Гипермаркет</option>
-                <option>Дом быта</option>
-                <option>Закусочная</option>
-                <option>Иные объекты бытового обслуживания</option>
-                <option>Кафе</option>
-                <option>Киоск</option>
-                <option>Ломбард</option>
-                <option>Магазин</option>
-                <option>Магазин с алкоголем</option>
-                <option>Магазин-салон</option>
-                <option>Минимаркет</option>
-                <option>Музей</option>
-                <option>Передвижной торговый объект</option>
-                <option>Продажа транспортных билетов</option>
-                <option>Ремонт металлоизделий</option>
-                <option>Ремонт обуви</option>
-                <option>Ремонт одежды и обуви</option>
-                <option>Ремонт техники</option>
-                <option>Ремонт часов</option>
-                <option>Ремонт ювелирных изделий</option>
-                <option>Ресторан</option>
-                <option>Салон красоты</option>
-                <option>Сауна</option>
-                <option>Специализированный непродуктовый магазин</option>
-                <option>Специализированный продуктовый магазин</option>
-                <option>Столовая</option>
-                <option>Супермаркет</option>
-                <option>Товары для детей</option>
-                <option>Товары для дома</option>
-                <option>Товары для женщин</option>
-                <option>Универсам</option>
-                <option>Фастфуд</option>
-                <option>Фотоателье</option>
-                <option>Химчистка</option>
+                {% for key, t in spheredict.items() %}
+                <option {% if key == defselected %}selected{% endif %}>{{ key }}</option>
+                {% endfor %}
 
               </select>
             </div>
+        <div class="col">
+          <input class="form-check-input" name="dayornight" type="checkbox" value="True" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            Ночная проходимость
+          </label>
+        </div>
 
       </div>
       <div class="col-sm" align="right">
-        <div class="row">
-          Дневная проходимость <b>0</b> &nbsp;&nbsp;&nbsp;<input id="day" name="day" type="text" class="span2" value="" data-slider-min="0" data-slider-max="10000" data-slider-step="5" data-slider-value="[0,10000]"/> &nbsp;&nbsp;&nbsp;<b>10000</b>
+        <div class="col float-right">
+          Дневная проходимость &nbsp;<b>0</b> &nbsp;&nbsp;&nbsp;<input id="day" name="day" type="text" class="span2" value="" data-slider-min="0" data-slider-max="10000" data-slider-step="5" data-slider-value="[0,10000]"/> &nbsp;&nbsp;&nbsp;<b>10000</b>
         </div>
-        <div class="row">
-          Ночная проходимость <b>0</b> &nbsp;&nbsp;&nbsp;<input id="night" name="night" type="text" class="span2" value="" data-slider-min="0" data-slider-max="3000" data-slider-step="5" data-slider-value="[0,3000]"/> &nbsp;&nbsp;&nbsp;<b>&nbsp;3000</b>
+        <div class="col float-right">
+          Ночная проходимость &nbsp;<b>0</b> &nbsp;&nbsp;&nbsp;<input id="night" name="night" type="text" class="span2" value="" data-slider-min="0" data-slider-max="3000" data-slider-step="5" data-slider-value="[0,3000]"/> &nbsp;&nbsp;&nbsp;<b>&nbsp;3000</b>
         </div>
 
-        <div class="row mt-3 mu-2" align="right">
-          <button type="submit" class="btn btn-light" align = "right">Подобрать локации</button>
+        <div class="col mt-3">
+          <button type="submit" class="btn btn-light mu-3 float-right">Подобрать локации</button>
         </div>
       </div>
 
@@ -79,7 +49,7 @@
 
       </div>
     </div>
-
+</div>
 
 
 

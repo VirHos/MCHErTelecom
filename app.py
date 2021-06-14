@@ -67,8 +67,8 @@ def create_graph_rec(points):
     print(points)
     #points = pd.read_excel("./data/data-4275-2021-05-28.xlsx",engine='openpyxl')
 
-    fig = px.scatter_mapbox(points, lat="lat", lon="long", hover_data={'lat':False,'long':False,"concurents_cnt":True},#hover_name="Средняя проходимость в день",
-                            color_discrete_sequence=["slateblue"], zoom=11, height=500)
+    fig = px.scatter_mapbox(points, lat="lat", lon="long", hover_data={'lat':True,'long':True,"concurents_cnt":True},#hover_name="Средняя проходимость в день",
+                            color_discrete_sequence=["black"], zoom=11, height=500)
     fig.update_layout(mapbox_style="open-street-map")
 
 
@@ -80,6 +80,7 @@ def main():
         sphere = request.form.get('sphere')
         day = request.form.get('day')
         night = request.form.get('night')
+        dayornight = request.form.get('dayornight')
         print(sphere, day, night)
         #print(get_best_intersec_points('кинотеатры'))
         #print(get_best_intersec_points('кафе'))
@@ -88,13 +89,13 @@ def main():
         print(int(day.split(',')[0]))
         print(int(night.split(',')[1]))
         return render_template('index.html', my_graph=create_graph_rec(\
-            get_best_intersec_points(spheredict[sphere],day_flag=True,  #FLAG TRUE - day FALSE-Night
+            get_best_intersec_points(spheredict[sphere],day_flag=dayornight!='True',  #FLAG TRUE - day FALSE-Night
                              day_l=int(day.split(',')[0]), #low day bound
                              day_u=int(day.split(',')[1]), #up day bound
                              night_l=int(night.split(',')[0]), #low night bound
                              #night_u=int(night.split(',')[1])\
-        )))
-    return render_template('index.html', my_graph=create_graph())
+        )), spheredict=spheredict, defselected=sphere)
+    return render_template('index.html', my_graph=create_graph(), spheredict=spheredict,defselected='Бар')
 
 
 @app.route('/team/')
